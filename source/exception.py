@@ -1,6 +1,6 @@
 import os
 import sys
-
+from logger import logging
 
 def error_message_detail(error, error_details:sys):
     _, _, exc_tb = error_details.exc_info()
@@ -20,8 +20,7 @@ class CustomException(Exception):
 
 if __name__ == "__main__":
     try:
-        1 / 0
+        a = 1 / 0
     except Exception as e:
+        logging.error("An error occurred in the main block.")
         raise CustomException(e, sys) from e
-    finally:
-        print("This will always execute, even if an exception occurs.")

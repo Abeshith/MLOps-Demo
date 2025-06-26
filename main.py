@@ -1,6 +1,3 @@
-def main():
-    print("Hello from mlops-project!")
+from source.logger import logging
 
-
-if __name__ == "__main__":
-    main()
+logging.info("This is an info message.")
