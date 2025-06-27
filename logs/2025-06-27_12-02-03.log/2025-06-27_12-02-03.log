@@ -1,0 +1,80 @@
+[2025-06-27 12:02:05,432] 29 root - INFO - Entering the data ingestion method or component
+[2025-06-27 12:02:05,436] 33 root - INFO - Read the dataset as a pandas dataframe
+[2025-06-27 12:02:05,442] 38 root - INFO - Train test split initiated
+[2025-06-27 12:02:05,446] 44 root - INFO - Ingestion of the data is completed
+[2025-06-27 12:02:05,447] 77 root - INFO - Starting data transformation process
+[2025-06-27 12:02:05,466] 83 root - INFO - Train and test datasets loaded successfully
+[2025-06-27 12:02:05,466] 29 root - INFO - Starting data transformation process
+[2025-06-27 12:02:05,466] 56 root - INFO - Numerical and categorical transformers defined
+[2025-06-27 12:02:05,466] 57 root - INFO - Numerical features: ['reading_score', 'writing_score']
+[2025-06-27 12:02:05,467] 58 root - INFO - Categorical features: ['gender', 'race_ethnicity', 'parental_level_of_education', 'lunch', 'test_preparation_course']
+[2025-06-27 12:02:05,467] 66 root - INFO - Preprocessing steps defined
+[2025-06-27 12:02:05,467] 97 root - INFO - Input features and target feature separated
+[2025-06-27 12:02:05,480] 105 root - INFO - Data transformation completed successfully
+[2025-06-27 12:02:05,480] 47 root - INFO - Entering the model trainer component
+[2025-06-27 12:02:05,481] 57 root - INFO - Starting model evaluation and hyperparameter tuning...
+[2025-06-27 12:02:05,481] 64 root - INFO - Training model: KNeighborsRegressor
+[2025-06-27 12:02:05,481] 65 root - INFO - Hyperparameter search space: {'n_neighbors': [3, 5, 7, 9], 'weights': ['uniform', 'distance']}
+[2025-06-27 12:02:11,129] 77 root - INFO - Best parameters for KNeighborsRegressor: {'n_neighbors': 9, 'weights': 'distance'}
+[2025-06-27 12:02:11,129] 78 root - INFO - Best cross-validation score for KNeighborsRegressor: 0.5996
+[2025-06-27 12:02:14,972] 90 root - INFO - Final R2 score for KNeighborsRegressor: 0.5786
+[2025-06-27 12:02:14,973] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:14,973] 64 root - INFO - Training model: DecisionTreeRegressor
+[2025-06-27 12:02:14,973] 65 root - INFO - Hyperparameter search space: {'criterion': ['squared_error', 'friedman_mse'], 'max_depth': [None, 10, 20, 30]}
+[2025-06-27 12:02:15,042] 77 root - INFO - Best parameters for DecisionTreeRegressor: {'criterion': 'friedman_mse', 'max_depth': 10}
+[2025-06-27 12:02:15,042] 78 root - INFO - Best cross-validation score for DecisionTreeRegressor: 0.7163
+[2025-06-27 12:02:15,046] 90 root - INFO - Final R2 score for DecisionTreeRegressor: 0.7624
+[2025-06-27 12:02:15,047] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:15,047] 64 root - INFO - Training model: CatBoostRegressor
+[2025-06-27 12:02:15,047] 65 root - INFO - Hyperparameter search space: {'depth': [4, 6, 8], 'learning_rate': [0.01, 0.1, 0.2], 'iterations': [100, 200]}
+[2025-06-27 12:02:20,572] 77 root - INFO - Best parameters for CatBoostRegressor: {'depth': 4, 'iterations': 100, 'learning_rate': 0.1}
+[2025-06-27 12:02:20,572] 78 root - INFO - Best cross-validation score for CatBoostRegressor: 0.8539
+[2025-06-27 12:02:20,673] 90 root - INFO - Final R2 score for CatBoostRegressor: 0.8714
+[2025-06-27 12:02:20,673] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:20,673] 64 root - INFO - Training model: RandomForestRegressor
+[2025-06-27 12:02:20,673] 65 root - INFO - Hyperparameter search space: {'n_estimators': [50, 100, 200], 'max_depth': [None, 10, 20]}
+[2025-06-27 12:02:23,907] 77 root - INFO - Best parameters for RandomForestRegressor: {'max_depth': 10, 'n_estimators': 200}
+[2025-06-27 12:02:23,907] 78 root - INFO - Best cross-validation score for RandomForestRegressor: 0.8328
+[2025-06-27 12:02:24,536] 90 root - INFO - Final R2 score for RandomForestRegressor: 0.8565
+[2025-06-27 12:02:24,536] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:24,536] 64 root - INFO - Training model: AdaBoostRegressor
+[2025-06-27 12:02:24,536] 65 root - INFO - Hyperparameter search space: {'n_estimators': [50, 100], 'learning_rate': [0.01, 0.1]}
+[2025-06-27 12:02:25,175] 77 root - INFO - Best parameters for AdaBoostRegressor: {'learning_rate': 0.1, 'n_estimators': 100}
+[2025-06-27 12:02:25,175] 78 root - INFO - Best cross-validation score for AdaBoostRegressor: 0.7942
+[2025-06-27 12:02:25,350] 90 root - INFO - Final R2 score for AdaBoostRegressor: 0.8280
+[2025-06-27 12:02:25,350] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:25,350] 64 root - INFO - Training model: GradientBoostingRegressor
+[2025-06-27 12:02:25,350] 65 root - INFO - Hyperparameter search space: {'n_estimators': [50, 100], 'learning_rate': [0.01, 0.1]}
+[2025-06-27 12:02:25,605] 77 root - INFO - Best parameters for GradientBoostingRegressor: {'learning_rate': 0.1, 'n_estimators': 50}
+[2025-06-27 12:02:25,605] 78 root - INFO - Best cross-validation score for GradientBoostingRegressor: 0.8456
+[2025-06-27 12:02:25,656] 90 root - INFO - Final R2 score for GradientBoostingRegressor: 0.8688
+[2025-06-27 12:02:25,657] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:25,657] 64 root - INFO - Training model: SVR
+[2025-06-27 12:02:25,657] 65 root - INFO - Hyperparameter search space: {'kernel': ['linear', 'rbf'], 'C': [0.1, 1.0, 10.0]}
+[2025-06-27 12:02:25,900] 77 root - INFO - Best parameters for SVR: {'C': 1.0, 'kernel': 'linear'}
+[2025-06-27 12:02:25,900] 78 root - INFO - Best cross-validation score for SVR: 0.8656
+[2025-06-27 12:02:25,938] 90 root - INFO - Final R2 score for SVR: 0.8805
+[2025-06-27 12:02:25,938] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:25,938] 64 root - INFO - Training model: LinearRegression
+[2025-06-27 12:02:25,938] 65 root - INFO - Hyperparameter search space: {}
+[2025-06-27 12:02:25,938] 82 root - INFO - No hyperparameters to tune for LinearRegression
+[2025-06-27 12:02:25,940] 90 root - INFO - Final R2 score for LinearRegression: 0.8804
+[2025-06-27 12:02:25,940] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:25,940] 64 root - INFO - Training model: Ridge
+[2025-06-27 12:02:25,940] 65 root - INFO - Hyperparameter search space: {'alpha': [0.1, 1.0, 10.0]}
+[2025-06-27 12:02:25,967] 77 root - INFO - Best parameters for Ridge: {'alpha': 0.1}
+[2025-06-27 12:02:25,967] 78 root - INFO - Best cross-validation score for Ridge: 0.8664
+[2025-06-27 12:02:25,970] 90 root - INFO - Final R2 score for Ridge: 0.8804
+[2025-06-27 12:02:25,970] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:25,970] 64 root - INFO - Training model: Lasso
+[2025-06-27 12:02:25,970] 65 root - INFO - Hyperparameter search space: {'alpha': [0.1, 1.0, 10.0]}
+[2025-06-27 12:02:25,998] 77 root - INFO - Best parameters for Lasso: {'alpha': 0.1}
+[2025-06-27 12:02:25,998] 78 root - INFO - Best cross-validation score for Lasso: 0.8664
+[2025-06-27 12:02:26,000] 90 root - INFO - Final R2 score for Lasso: 0.8821
+[2025-06-27 12:02:26,000] 91 root - INFO - --------------------------------------------------
+[2025-06-27 12:02:26,000] 95 root - INFO - Model evaluation completed successfully!
+[2025-06-27 12:02:26,000] 126 root - INFO - Best model found: Lasso with score: 0.8820820270670147
+[2025-06-27 12:02:26,002] 133 root - INFO - Model training completed and model saved successfully.
+[2025-06-27 12:02:26,003] 47 root - INFO - Model report saved successfully to artifacts\model_report.txt
+[2025-06-27 12:02:26,003] 140 root - INFO - Model report saved successfully.
+[2025-06-27 12:02:26,004] 146 root - INFO - Model evaluation metrics - R2: 0.8820820270670147

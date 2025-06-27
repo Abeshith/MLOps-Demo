@@ -5,7 +5,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 from source.logger import logging
 from source.exception import CustomException
-from source.utils import save_object, evaluate_models
+from source.utils import save_object, evaluate_models, save_model_report
 import numpy as np
 
 from sklearn.model_selection import RandomizedSearchCV
@@ -61,12 +61,52 @@ class ModelTrainer:
                 "Lasso": Lasso()
             }
 
+            params = {
+                "KNeighborsRegressor": {
+                    'n_neighbors': [3, 5, 7, 9],
+                    'weights': ['uniform', 'distance']
+                },
+                "DecisionTreeRegressor": {
+                    'criterion': ['squared_error', 'friedman_mse'],
+                    'max_depth': [None, 10, 20, 30]
+                },
+                "CatBoostRegressor": {
+                    'depth': [4, 6, 8],
+                    'learning_rate': [0.01, 0.1, 0.2],
+                    'iterations': [100, 200]
+                },
+                "RandomForestRegressor": {
+                    'n_estimators': [50, 100, 200],
+                    'max_depth': [None, 10, 20]
+                },
+                "AdaBoostRegressor": {
+                    'n_estimators': [50, 100],
+                    'learning_rate': [0.01, 0.1]
+                },
+                "GradientBoostingRegressor": {
+                    'n_estimators': [50, 100],
+                    'learning_rate': [0.01, 0.1]
+                },
+                "SVR": {
+                    'kernel': ['linear', 'rbf'],
+                    'C': [0.1, 1.0, 10.0]
+                },
+                "LinearRegression": {},
+                "Ridge": {
+                    'alpha': [0.1, 1.0, 10.0]
+                },
+                "Lasso": {
+                    'alpha': [0.1, 1.0, 10.0]
+                } 
+            }
+
             model_report : dict = evaluate_models(
                 X_train=X_train, 
                 y_train=y_train, 
                 X_test=X_test, 
                 y_test=y_test, 
-                models=models
+                models=models,
+                params=params
             )
 
             # Filter only R2 scores to find the best model
@@ -92,10 +132,11 @@ class ModelTrainer:
 
             logging.info("Model training completed and model saved successfully.")
 
-            with open(self.model_trainer_config.model_report_file_path, 'w') as report_file:
-                for model_name, score in model_report.items():
-                    report_file.write(f"{model_name}: {score}\n")
-                    
+            save_model_report(
+                file_path=self.model_trainer_config.model_report_file_path,
+                model_report=model_report
+            )
+
             logging.info("Model report saved successfully.")
 
             predictions = best_model.predict(X_test)
