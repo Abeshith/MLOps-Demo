@@ -11,6 +11,8 @@ import numpy as np
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
+from source.components.data_transformation import DataTransformation, DataTransformationConfig
+
 
 @dataclass
 class DataIngestionConfig:
@@ -53,7 +55,11 @@ class DataIngestion:
 if __name__ == "__main__":
     try:
         data_ingestion = DataIngestion()
-        data_ingestion.initiate_data_ingestion()
+        train_data, test_data , raw_data = data_ingestion.initiate_data_ingestion()
+
+        data_transformation = DataTransformation()
+        
+
     except Exception as e:
         logging.error("An error occurred in the main block.")
         raise CustomException(e, sys) from e
