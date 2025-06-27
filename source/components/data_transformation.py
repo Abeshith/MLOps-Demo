@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 import pandas as pd
+import numpy as np
 
 
 @dataclass
@@ -71,17 +72,17 @@ class DataTransformation:
             raise CustomException(e, sys) from e
         
 
-        def initiate_data_transformation(self, train_path, test_path):
+    def initiate_data_transformation(self, train_path, test_path):
             try:
                 logging.info("Starting data transformation process")
 
-                # Load the train and test datasets
+                    # Load the train and test datasets
                 train_df = pd.read_csv(train_path)
                 test_df = pd.read_csv(test_path)
 
                 logging.info("Train and test datasets loaded successfully")
 
-                # Define the preprocessing steps
+                    # Define the preprocessing steps
                 preprocessor = self.data_transformation()
 
                 numerical_features = ['reading_score', 'writing_score']
@@ -103,17 +104,17 @@ class DataTransformation:
 
                 logging.info("Data transformation completed successfully")
 
-                # Save the preprocessor object
+                    # Save the preprocessor object
                 save_object(
-                    preprocessor = preprocessor,
-                    file_path =  self.preprocessor_config.preprocessor_obj_file_path
+                    file_path =  self.preprocessor_config.preprocessor_obj_file_path,
+                    obj= preprocessor
                 )
 
-                return (
-                    train_array,
-                    test_array,
-                    self.preprocessor_config.preprocessor_obj_file_path
-                )
+                return(
+                        train_array,
+                        test_array,
+                        self.preprocessor_config.preprocessor_obj_file_path
+                    )
 
             except Exception as e:
                 logging.error("An error occurred in the data transformation component.")

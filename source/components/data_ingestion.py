@@ -58,7 +58,7 @@ if __name__ == "__main__":
         train_data, test_data , raw_data = data_ingestion.initiate_data_ingestion()
 
         data_transformation = DataTransformation()
-        
+        preprocessor = data_transformation.initiate_data_transformation(train_data, test_data)
 
     except Exception as e:
         logging.error("An error occurred in the main block.")

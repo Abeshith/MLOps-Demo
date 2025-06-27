@@ -1,0 +1,15 @@
+[2025-06-27 10:58:21,017] 28 root - INFO - Entering the data ingestion method or component
+[2025-06-27 10:58:21,026] 32 root - INFO - Read the dataset as a pandas dataframe
+[2025-06-27 10:58:21,032] 37 root - INFO - Train test split initiated
+[2025-06-27 10:58:21,043] 43 root - INFO - Ingestion of the data is completed
+[2025-06-27 10:58:21,044] 77 root - INFO - Starting data transformation process
+[2025-06-27 10:58:21,073] 83 root - INFO - Train and test datasets loaded successfully
+[2025-06-27 10:58:21,073] 29 root - INFO - Starting data transformation process
+[2025-06-27 10:58:21,073] 56 root - INFO - Numerical and categorical transformers defined
+[2025-06-27 10:58:21,073] 57 root - INFO - Numerical features: ['reading_score', 'writing_score']
+[2025-06-27 10:58:21,074] 58 root - INFO - Categorical features: ['gender', 'race_ethnicity', 'parental_level_of_education', 'lunch', 'test_preparation_course']
+[2025-06-27 10:58:21,074] 66 root - INFO - Preprocessing steps defined
+[2025-06-27 10:58:21,077] 97 root - INFO - Input features and target feature separated
+[2025-06-27 10:58:21,099] 105 root - INFO - Data transformation completed successfully
+[2025-06-27 10:58:21,099] 120 root - ERROR - An error occurred in the data transformation component.
+[2025-06-27 10:58:21,099] 64 root - ERROR - An error occurred in the main block.
