@@ -1,0 +1,18 @@
+[2025-06-27 11:41:25,461] 29 root - INFO - Entering the data ingestion method or component
+[2025-06-27 11:41:25,471] 33 root - INFO - Read the dataset as a pandas dataframe
+[2025-06-27 11:41:25,475] 38 root - INFO - Train test split initiated
+[2025-06-27 11:41:25,485] 44 root - INFO - Ingestion of the data is completed
+[2025-06-27 11:41:25,485] 77 root - INFO - Starting data transformation process
+[2025-06-27 11:41:25,506] 83 root - INFO - Train and test datasets loaded successfully
+[2025-06-27 11:41:25,506] 29 root - INFO - Starting data transformation process
+[2025-06-27 11:41:25,506] 56 root - INFO - Numerical and categorical transformers defined
+[2025-06-27 11:41:25,506] 57 root - INFO - Numerical features: ['reading_score', 'writing_score']
+[2025-06-27 11:41:25,506] 58 root - INFO - Categorical features: ['gender', 'race_ethnicity', 'parental_level_of_education', 'lunch', 'test_preparation_course']
+[2025-06-27 11:41:25,507] 66 root - INFO - Preprocessing steps defined
+[2025-06-27 11:41:25,511] 97 root - INFO - Input features and target feature separated
+[2025-06-27 11:41:25,532] 105 root - INFO - Data transformation completed successfully
+[2025-06-27 11:41:25,533] 47 root - INFO - Entering the model trainer component
+[2025-06-27 11:41:27,005] 85 root - INFO - Best model found: Ridge with score: 0.8805671790733923
+[2025-06-27 11:41:27,006] 92 root - INFO - Model training completed and model saved successfully.
+[2025-06-27 11:41:27,006] 97 root - INFO - Model report saved successfully.
+[2025-06-27 11:41:27,006] 103 root - INFO - Model evaluation metrics - R2: 0.8805671790733923
