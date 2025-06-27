@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MLOps Project - Machine Learning Model Interface">
+    <meta name="author" content="MLOps Project Team">
+    <title>MLOps Project - Home</title>
+    
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .hero-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-custom {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">🤖 MLOps Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section p-5 mb-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold text-primary mb-4">Student Exam Performance Indicator</h1>
+                    <p class="lead mb-4">
+                        Predict student math scores using our advanced machine learning model. 
+                        Enter student information to get accurate performance predictions.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#prediction-form" class="btn btn-custom">🚀 Start Prediction</a>
+                        <a href="#about" class="btn btn-outline-primary">📋 Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="p-4">
+                        <i class="fas fa-graduation-cap" style="font-size: 8rem; color: #667eea;"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Form Section -->
+        <section id="prediction-form" class="hero-section p-5 mb-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-center mb-4">Student Exam Performance Prediction</h2>
+                    
+                    <form action="{{ url_for('predict') }}" method="post" class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Gender</label>
+                                <select class="form-control" name="gender" required>
+                                    <option value="" selected disabled>Select your Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a gender.</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Race or Ethnicity</label>
+                                <select class="form-control" name="ethnicity" required>
+                                    <option value="" selected disabled>Select Ethnicity</option>
+                                    <option value="group A">Group A</option>
+                                    <option value="group B">Group B</option>
+                                    <option value="group C">Group C</option>
+                                    <option value="group D">Group D</option>
+                                    <option value="group E">Group E</option>
+                                </select>
+                                <div class="invalid-feedback">Please select an ethnicity.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Parental Level of Education</label>
+                                <select class="form-control" name="parental_level_of_education" required>
+                                    <option value="" selected disabled>Select Parent Education</option>
+                                    <option value="associate's degree">Associate's Degree</option>
+                                    <option value="bachelor's degree">Bachelor's Degree</option>
+                                    <option value="high school">High School</option>
+                                    <option value="master's degree">Master's Degree</option>
+                                    <option value="some college">Some College</option>
+                                    <option value="some high school">Some High School</option>
+                                </select>
+                                <div class="invalid-feedback">Please select parent education level.</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Lunch Type</label>
+                                <select class="form-control" name="lunch" required>
+                                    <option value="" selected disabled>Select Lunch Type</option>
+                                    <option value="free/reduced">Free/Reduced</option>
+                                    <option value="standard">Standard</option>
+                                </select>
+                                <div class="invalid-feedback">Please select lunch type.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Test Preparation Course</label>
+                                <select class="form-control" name="test_preparation_course" required>
+                                    <option value="" selected disabled>Select Test Course</option>
+                                    <option value="none">None</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                                <div class="invalid-feedback">Please select test preparation status.</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Reading Score (0-100)</label>
+                                <input class="form-control" type="number" name="reading_score" 
+                                       placeholder="Enter your Reading score" min="0" max="100" required>
+                                <div class="invalid-feedback">Please enter a valid reading score (0-100).</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Writing Score (0-100)</label>
+                                <input class="form-control" type="number" name="writing_score" 
+                                       placeholder="Enter your Writing Score" min="0" max="100" required>
+                                <div class="invalid-feedback">Please enter a valid writing score (0-100).</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mb-4">
+                            <button class="btn btn-custom btn-lg" type="submit">
+                                🎯 Predict Math Score
+                            </button>
+                        </div>
+                    </form>
+                    
+                    {% if results %}
+                    <div class="alert alert-success text-center mt-4" role="alert">
+                        <h4 class="alert-heading">Prediction Result</h4>
+                        <hr>
+                        <p class="mb-0">The predicted Math Score is: <strong>{{ results }}</strong></p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="hero-section p-5 mb-5">
+            <div class="text-center">
+                <h2 class="mb-4">About Student Performance Prediction</h2>
+                <p class="lead">
+                    Our student exam performance indicator uses advanced machine learning algorithms 
+                    to predict student math scores based on various demographic and educational factors. 
+                    This tool helps educators, parents, and students understand the factors that 
+                    contribute to academic success.
+                </p>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5>🎯 Our Goal</h5>
+                        <p>To provide accurate predictions that help identify students who may need additional support and resources.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>🔧 Our Model</h5>
+                        <p>Built using advanced ML techniques with factors like gender, ethnicity, parental education, and test scores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Form validation
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation items on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add prediction form to navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navList = document.querySelector('.navbar-nav');
+            const predictionNavItem = document.createElement('li');
+            predictionNavItem.className = 'nav-item';
+            predictionNavItem.innerHTML = '<a class="nav-link" href="#prediction-form">Prediction</a>';
+            navList.insertBefore(predictionNavItem, navList.children[1]);
+        });
+    </script>
+</body>
+</html>
