@@ -66,9 +66,7 @@ jobs:
               echo "Docker Hub username: $DOCKER_USERNAME"
 
           - name: Build Docker image
-            run: |
-              docker build -t $DOCKER_USERNAME/myapp:latest .
-              docker build -t $DOCKER_USERNAME/myapp:${{ github.sha }} .
+            run: docker build -t $DOCKER_USERNAME/myapp:latest .
 
           - name: Scan Docker image with Trivy
             run: |
@@ -83,36 +81,14 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
-
           - name: Set up Docker Buildx
             uses: docker/setup-buildx-action@v3
-
-          - name: Validate Docker Hub credentials
-            run: |
-              if [ -z "$DOCKER_USERNAME" ]; then
-                echo "Error: DOCKERHUB_USERNAME secret is not set"
-                exit 1
-              fi
-              if [ -z "$DOCKER_PASSWORD" ]; then
-                echo "Error: DOCKERHUB_PASSWORD secret is not set"
-                exit 1
-              fi
-              echo "Docker Hub username: $DOCKER_USERNAME"
 
           - name: Login to Docker Hub
             run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-          - name: Build Docker image
-            run: |
-              docker build -t $DOCKER_USERNAME/myapp:latest .
-              docker build -t $DOCKER_USERNAME/myapp:${{ github.sha }} .
-
           - name: Push Docker image
-            run: |
-              docker push $DOCKER_USERNAME/myapp:latest
-              docker push $DOCKER_USERNAME/myapp:${{ github.sha }}
+            run: docker push $DOCKER_USERNAME/myapp:latest
 
 
         
